@@ -1,7 +1,6 @@
 const categorySamples = [
   { name: "Electronics & Gadgets", image: "images/laptops.jpg" },
   { name: "Fashion & Apparel", image: "images/dress.jpg" }
-
 ];
 
 const productsContainer = document.getElementById("products-container");

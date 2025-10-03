@@ -23,12 +23,12 @@ const categories = {
   }
 };
 
-
 const rootSelect = document.getElementById("root-category");
 const subSelect = document.getElementById("sub-category");
 const leafSelect = document.getElementById("leaf-category");
 const productsContainer = document.getElementById("products-container");
 
+// Populate Root Category
 Object.keys(categories).forEach(root => {
   rootSelect.appendChild(new Option(root, root));
 });
@@ -56,13 +56,14 @@ subSelect.addEventListener("change", () => {
   if (!selectedSub) { leafSelect.disabled = true; return; }
 
   const leafs = categories[selectedRoot][selectedSub];
-  leafs.forEach(leaf => leafSelect.appendChild(new Option(leaf, leaf)));
+  leafs.forEach(leaf => leafSelect.appendChild(new Option(leaf.name, leaf.name)));
   leafSelect.disabled = false;
 
+  // Display all products in subcategory
   productsContainer.innerHTML = leafs.map(leaf => `
     <div class='product-card'>
-      <img src='https://via.placeholder.com/220x150?text=${encodeURIComponent(leaf)}' alt='${leaf}'>
-      <h3>${leaf}</h3>
+      <img src='${leaf.image}' alt='${leaf.name}'>
+      <h3>${leaf.name}</h3>
       <p>₱${Math.floor(Math.random()*2000)+500}</p>
       <button>View</button>
     </div>
@@ -70,13 +71,18 @@ subSelect.addEventListener("change", () => {
 });
 
 leafSelect.addEventListener("change", () => {
+  const selectedRoot = rootSelect.value;
+  const selectedSub = subSelect.value;
   const selectedLeaf = leafSelect.value;
   if (!selectedLeaf) return;
 
+  const leafs = categories[selectedRoot][selectedSub];
+  const product = leafs.find(p => p.name === selectedLeaf);
+
   productsContainer.innerHTML = `
     <div class='product-card'>
-      <img src='https://via.placeholder.com/220x150?text=${encodeURIComponent(selectedLeaf)}' alt='${selectedLeaf}'>
-      <h3>${selectedLeaf}</h3>
+      <img src='${product.image}' alt='${product.name}'>
+      <h3>${product.name}</h3>
       <p>₱${Math.floor(Math.random()*2000)+500}</p>
       <button>View</button>
     </div>
