@@ -46,7 +46,7 @@ subSelect.addEventListener("change", () => {
 
   productsContainer.innerHTML = leafs.map(leaf => `
     <div class='product-card'>
-      <img src='https://via.placeholder.com/220x150?text=${leaf}' alt='${leaf}'>
+      <img src='https://via.placeholder.com/220x150?text=${encodeURIComponent(leaf)}' alt='${leaf}'>
       <h3>${leaf}</h3>
       <p>₱${Math.floor(Math.random()*2000)+500}</p>
       <button>View</button>
@@ -60,7 +60,7 @@ leafSelect.addEventListener("change", () => {
 
   productsContainer.innerHTML = `
     <div class='product-card'>
-      <img src='https://via.placeholder.com/220x150?text=${selectedLeaf}' alt='${selectedLeaf}'>
+      <img src='https://via.placeholder.com/220x150?text=${encodeURIComponent(selectedLeaf)}' alt='${selectedLeaf}'>
       <h3>${selectedLeaf}</h3>
       <p>₱${Math.floor(Math.random()*2000)+500}</p>
       <button>View</button>
