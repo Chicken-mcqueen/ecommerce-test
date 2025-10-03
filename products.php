@@ -1,37 +1,40 @@
-const categories = {
-  "Electronics & Gadgets": {
-    "Mobile Phones & Accessories": [
-      { name: "Smartphones - Android", image: "images/android.jpg" },
-      { name: "Smartphones - iOS", image: "images/ios.jpg" },
-      { name: "Cases & Covers", image: "images/cases.jpg" }
-    ],
-    "Computers & Laptops": [
-      { name: "Laptops", image: "images/laptops.jpg" },
-      { name: "Desktops", image: "images/desktop.jpg" },
-      { name: "Monitors", image: "images/monitors.jpg" }
-    ]
-  },
-  "Fashion & Apparel": {
-    "Women’s Clothing": [
-      { name: "Dresses", image: "images/dress.jpg" },
-      { name: "Tops & Blouses", image: "images/tops.jpg" }
-    ],
-    "Men’s Clothing": [
-      { name: "Shirts", image: "images/shirts.jpg" },
-      { name: "T-Shirts & Polos", image: "images/tshirt.jpg" }
-    ]
-  }
-};
+<?php include 'includes/header.php'; ?>
 
+<section class="products-section">
+  <h2>Products</h2>
+  <div class="category-select">
+    <label for="root-category">Root Category</label>
+    <select id="root-category">
+      <option value="">-- Select Root Category --</option>
+      <?php foreach($categories as $root => $subs) { echo "<option value='$root'>$root</option>"; } ?>
+    </select>
+  </div>
+
+  <div class="category-select">
+    <label for="sub-category">Subcategory</label>
+    <select id="sub-category" disabled>
+      <option value="">-- Select Subcategory --</option>
+    </select>
+  </div>
+
+  <div class="category-select">
+    <label for="leaf-category">Leaf Category</label>
+    <select id="leaf-category" disabled>
+      <option value="">-- Select Leaf Category --</option>
+    </select>
+  </div>
+
+  <div class="products-container" id="products-container">
+  </div>
+</section>
+
+<script>
+const categories = <?php echo json_encode($categories); ?>;
 
 const rootSelect = document.getElementById("root-category");
 const subSelect = document.getElementById("sub-category");
 const leafSelect = document.getElementById("leaf-category");
 const productsContainer = document.getElementById("products-container");
-
-Object.keys(categories).forEach(root => {
-  rootSelect.appendChild(new Option(root, root));
-});
 
 rootSelect.addEventListener("change", () => {
   subSelect.innerHTML = '<option value="">-- Select Subcategory --</option>';
@@ -61,24 +64,13 @@ subSelect.addEventListener("change", () => {
 
   productsContainer.innerHTML = leafs.map(leaf => `
     <div class='product-card'>
-      <img src='https://via.placeholder.com/220x150?text=${encodeURIComponent(leaf)}' alt='${leaf}'>
+      <img src='https://via.placeholder.com/220x150?text=${leaf}' alt='${leaf}'>
       <h3>${leaf}</h3>
       <p>₱${Math.floor(Math.random()*2000)+500}</p>
       <button>View</button>
     </div>
   `).join('');
 });
+</script>
 
-leafSelect.addEventListener("change", () => {
-  const selectedLeaf = leafSelect.value;
-  if (!selectedLeaf) return;
-
-  productsContainer.innerHTML = `
-    <div class='product-card'>
-      <img src='https://via.placeholder.com/220x150?text=${encodeURIComponent(selectedLeaf)}' alt='${selectedLeaf}'>
-      <h3>${selectedLeaf}</h3>
-      <p>₱${Math.floor(Math.random()*2000)+500}</p>
-      <button>View</button>
-    </div>
-  `;
-});
+<?php include 'includes/footer.php'; ?>
