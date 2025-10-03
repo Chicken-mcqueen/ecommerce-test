@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PasigPalengke - Products</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+  <header>
+    <nav>
+      <h1><a href="index.html">PasigPalengke</a></h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="products-section">
+    <h2>Products</h2>
+
+    <div class="category-select">
+      <label for="root-category">Root Category</label>
+      <select id="root-category">
+        <option value="">-- Select Root Category --</option>
+      </select>
+    </div>
+
+    <div class="category-select">
+      <label for="sub-category">Subcategory</label>
+      <select id="sub-category" disabled>
+        <option value="">-- Select Subcategory --</option>
+      </select>
+    </div>
+
+    <div class="category-select">
+      <label for="leaf-category">Leaf Category</label>
+      <select id="leaf-category" disabled>
+        <option value="">-- Select Leaf Category --</option>
+      </select>
+    </div>
+
+    <div class="products-container" id="products-container">
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 PasigPalengke | Affiliate Aggregator</p>
+  </footer>
+
+  <script src="js/products.js"></script>
+</body>
+</html>

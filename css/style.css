@@ -36,6 +36,7 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
+/* Hero Section */
 .hero {
   text-align: center;
   padding: 80px 20px;
@@ -72,6 +73,11 @@ nav ul li a:hover {
   background-color: #fff;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .product-card:hover {

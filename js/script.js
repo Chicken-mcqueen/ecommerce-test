@@ -7,6 +7,10 @@ const products = [
 
 const productsContainer = document.getElementById("products-container");
 products.forEach(product => {
+  const cardLink = document.createElement("a");
+  cardLink.href = "products.html"; 
+  cardLink.classList.add("product-link"); 
+
   const card = document.createElement("div");
   card.classList.add("product-card");
   card.innerHTML = `
@@ -15,5 +19,7 @@ products.forEach(product => {
     <p>₱${product.price.toLocaleString()}</p>
     <button>View</button>
   `;
-  productsContainer.appendChild(card);
+
+  cardLink.appendChild(card);
+  productsContainer.appendChild(cardLink);
 });
