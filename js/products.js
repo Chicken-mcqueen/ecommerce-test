@@ -17,7 +17,7 @@ const categories = {
       { name: "Tops & Blouses", image: "images/tops.jpg" }
     ],
     "Men’s Clothing": [
-      { name: "Shirts", image: "images/shirts.jpg" },
+      { name: "Shirts", image: "images/shirt.jpg" },
       { name: "T-Shirts & Polos", image: "images/tshirt.jpg" }
     ]
   }
